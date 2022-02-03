@@ -1,1 +1,1 @@
-Base repository for Holberton School first project at shell.
+Modified README.md 03/02/2022
