@@ -1,13 +1,15 @@
 # Turn off passwd auth
-file_line { 'PasswordAuthentication':
+file_line { 'Turn off passwd auth':
     ensure => present,
     path   => '/etc/ssh/ssh_config',
-    line   => 'no'
+    line   => '#   PasswordAuthentication no',
+    match  => '#   PasswordAuthentication yes'
 }
 
 # Declare identity file
-file_line { 'IdentityFile':
+file_line { 'Declare identity file':
     ensure => present,
     path   => '/etc/ssh/ssh_config',
-    line   => '~/.ssh/school'
+    line   => '#   IdentityFile ~/.ssh/school',
+    match  => '#   IdentityFile ~/.ssh/id_rsa'
 }
