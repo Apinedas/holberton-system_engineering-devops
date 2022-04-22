@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Bash script to install nginx on server
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo rm /var/www/html/*
+sudo touch /var/www/html/index.html
+sudo chmod 666 /var/www/html/index.html
+sudo echo "Hello World" >> /var/www/html/index.html
