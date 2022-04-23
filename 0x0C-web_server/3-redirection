@@ -8,3 +8,5 @@ sudo touch /var/www/html/index.html
 sudo chmod 666 /var/www/html/index.html
 sudo echo "Hello World!" >> /var/www/html/index.html
 sudo service nginx reload
+new_string="\ \n\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;\n\t}\n"
+sudo sed -i "s/server_name*/a $new_string" /etc/nginx/sites-available/default
