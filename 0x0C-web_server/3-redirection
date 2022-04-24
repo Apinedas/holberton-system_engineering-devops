@@ -7,6 +7,6 @@ sudo rm /var/www/html/*
 sudo touch /var/www/html/index.html
 sudo chmod 666 /var/www/html/index.html
 echo "Hello World!" >> /var/www/html/index.html
-new_string="\ \n\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;\n\t}\n"
-sudo sed -i "s/server_name*/a $new_string" /etc/nginx/sites-available/default
+new_string="server_name _;\n\n\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;\n\t}"
+sudo sed -i "0,/server_name _;/{s|server_name _;|$new_string|}" /etc/nginx/sites-available/default
 sudo service nginx restart
