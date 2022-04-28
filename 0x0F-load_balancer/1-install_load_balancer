@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Configuring HAProxy
 
-sudo apt-get update
-sudo apt-get install -y haproxy
-sed -i -e '$a\n\nfrontend first_frontend\n\tbind :80,:8080\n\nbackend web_servers\n\tbalance roundrobin\n\tserver web-01 34.75.140.247:80 check\n\tserver web-02 54.198.208.252:80 check' /etc/haproxy/haproxy.cfg
+sudo apt-get install -y --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.4 -y
+sudo apt-get install -y haproxy=2.4.\*
+sed -i -e '$a\n\nfrontend first_frontend\n\tbind :80\n\nbackend web_servers\n\tbalance roundrobin\n\tserver web-01 34.75.140.247:80 check\n\tserver web-02 54.198.208.252:80 check' /etc/haproxy/haproxy.cfg
+
 sudo service haproxy restart
