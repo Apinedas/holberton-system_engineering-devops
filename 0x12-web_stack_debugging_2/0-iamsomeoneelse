@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Executes whoami as user passed
+
+su - $1 -s /bin/bash -c "whoami"
