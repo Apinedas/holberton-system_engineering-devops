@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Changes nginx to execute as nginx user
+# shellcheck disable=SC2046
 
 sudo kill -9 $(pidof apache2)
 sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sites-available/default
