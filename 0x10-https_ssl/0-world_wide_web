@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Prints "The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]" given a domain
+
+if [[ -z "$2" ]]; then
+    SUB_DOMAIN_ARRAY=("www" "lb-01" "web-01" "web-02")
+else
+    SUB_DOMAIN_ARRAY=("$2")
+fi
+
+for subdomain in "${SUB_DOMAIN_ARRAY[@]}"; do
+    dig "$subdomain.$1" | grep -A1 'ANSWER SECTION:' | sed '1d' | awk -v subd="$subdomain" '{printf "The subdomain %s is a %s record and points to %s\n", subd, $4, $5}'
+done
