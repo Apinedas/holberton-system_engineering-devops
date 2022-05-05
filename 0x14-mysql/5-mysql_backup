@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Backups all databases from MySQL
+
+mysqldump -u root -p"$1" --all-databases > backup.sql
+today=$(date +'%d-%m-%Y')
+tar -czf "$today.tar.gz" backup.sql
