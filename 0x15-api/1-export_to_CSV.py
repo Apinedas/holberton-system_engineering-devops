@@ -12,7 +12,7 @@ if __name__ == '__main__':
     tasks = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'.
                          format(argv[1])).json()
 
-    with open('{}.csv'.format(argv[1]), 'w', encoding='UTF8') as file:
+    with open('{}.csv'.format(argv[1]), 'w') as file:
         writer = csv.writer(file)
 
         for task in tasks:
