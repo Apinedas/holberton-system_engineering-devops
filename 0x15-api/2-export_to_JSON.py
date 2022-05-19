@@ -15,7 +15,9 @@ if __name__ == '__main__':
     with open('{}.json'.format(argv[1]), 'w') as file:
         task_list = []
         for task in tasks:
-            edited_task = {"task": task['title'], "completed": task['completed'], "username": user['name']}
+            edited_task = {"task": task['title'],
+                           "completed": task['completed'],
+                           "username": user['name']}
             task_list.append(edited_task)
         write_dict = {user['id']: task_list}
         file.write(json.dumps(write_dict))
