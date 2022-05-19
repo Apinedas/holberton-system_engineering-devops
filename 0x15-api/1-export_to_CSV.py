@@ -13,11 +13,8 @@ if __name__ == '__main__':
                          format(argv[1])).json()
 
     with open('{}.csv'.format(argv[1]), 'w') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quotechar='"', quoting=csv.QUOTE_ALL)
 
         for task in tasks:
-            row = ['"{}"'.format(user['id']),
-                   '"{}"'.format(user['username']),
-                   '"{}"'.format(task['completed']),
-                   '"{}"'.format(task['title'])]
+            row = [user['id'], user['username'], task['completed'], task['title']]
             writer.writerow(row)
