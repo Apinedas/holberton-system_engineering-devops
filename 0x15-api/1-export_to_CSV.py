@@ -16,5 +16,5 @@ if __name__ == '__main__':
         writer = csv.writer(file)
 
         for task in tasks:
-            row = [user['id'], user['name'], task['completed'], task['title']]
+            row = [user['id'], user['username'], task['completed'], task['title']]
             writer.writerow(row)

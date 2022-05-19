@@ -19,7 +19,7 @@ if __name__ == '__main__':
             for task in tasks:
                 edited_task = {"task": task['title'],
                                "completed": task['completed'],
-                               "username": user['name']}
+                               "username": user['username']}
                 task_list.append(edited_task)
             write_dict[user['id']] = task_list
             return write_dict
