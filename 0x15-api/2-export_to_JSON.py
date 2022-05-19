@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''for a given employee ID, returns csv
+'''for a given employee ID, returns JSON
    about his/her TODO list progress.'''
 
 if __name__ == '__main__':
-    import csv
+    import json
     import requests
     from sys import argv
 
@@ -12,9 +12,10 @@ if __name__ == '__main__':
     tasks = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'.
                          format(argv[1])).json()
 
-    with open('{}.csv'.format(argv[1]), 'w') as file:
-        writer = csv.writer(file)
-
+    with open('{}.json'.format(argv[1]), 'w') as file:
+        task_list = []
         for task in tasks:
-            row = [user['id'], user['name'], task['completed'], task['title']]
-            writer.writerow(row)
+            edited_task = {"task": task['title'], "completed": task['completed'], "username": user['name']}
+            task_list.append(edited_task)
+        write_dict = {user['id']: task_list}
+        file.write(json.dumps(write_dict))
