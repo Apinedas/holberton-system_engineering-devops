@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     def get_dict(i):
         url = 'https://jsonplaceholder.typicode.com/users'
-        user = requests.get('{}}/{}'.
+        user = requests.get('{}/{}'.
                             format(url, i)).json()
         tasks = requests.get('{}/{}/todos'.
                              format(url, i)).json()
