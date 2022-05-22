@@ -2,9 +2,6 @@
 '''prints actual suscribers for given subreddit'''
 
 
-from email import header
-
-
 def number_of_subscribers(subreddit):
     '''prints actual suscribers for given subreddit'''
     import requests
@@ -13,7 +10,7 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': 'Mozilla/5.0\
               (Windows NT 6.1; Win64; x64; rv:47.0)\
               Gecko/20100101 Firefox/47.0'}
-    
+
     url = 'https://api.reddit.com/r/{}/about'.format(argv[1])
     r = requests.get(url, headers=headers, allow_redirects=False)
     if r.json().get('data'):
